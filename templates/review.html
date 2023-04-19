@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+
+{% autoescape false %}
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cross-Site Scripting (XSS) Attacks</title>
+    <link rel="stylesheet" href="../static/review.css" />
+    <script src="../static/review.js" defer></script>
+  </head>
+  <body>
+    <div class="topnav">
+        <a href="{{url_for("dashboard")}}" >View our products</a>
+        <a href="{{url_for("blog")}}">Read our blog</a>
+        <a href="{{url_for("insert")}}" class="active">Review our products</a>
+        <a href="{{url_for('logout')}}" style="float: right;">Press here to logout</a>
+    </div>
+
+    <section id="user-input">
+      <form action="{{url_for('insert')}}"  method="POST">
+        <div class="form-control">
+          <label for="user-name"> Your Full Name</label>
+          <input type="text" id="user-name" name="user-name" />
+        </div>
+        <div class="form-control">
+
+          <label for="user-message">Product Feedback</label>
+          <!--<input type="text" id="user-message" name="user-message" /> -->
+          <textarea id="user-message" name="user-message"></textarea> 
+        </div>
+        <div class="form-control">
+          <label for="message-image">Product Image</label>
+          <input type="text" id="message-image" name="message-image" />
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+    <section id="user-messages">
+      {% for datum in data %}
+      <div class="prodreview">
+        <h5>{{datum[0]}}</h5>
+        <p>{{datum[1]}}</p>
+        <img src="{{datum[2]}}" alt="Sorry! Image not available at this time" onerror="this.onerror=null;">
+      </div>
+      {% endfor %}
+    </section>
+  </body>
+</html>
+
+{% endautoescape %}

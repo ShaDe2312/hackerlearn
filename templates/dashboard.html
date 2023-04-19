@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/dashboard.css" />
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="{{url_for("dashboard")}}" class="active">View our products</a>
+        <a href="{{url_for("blog")}}">Read our blog</a>
+        <a href="{{url_for("insert")}}">Review our products</a>
+        <a href="{{url_for('logout')}}" style="float: right;">Press here to logout</a>
+    </div>
+
+    <h1 style="color: aliceblue; text-align: center;;">Generic E-commerce website!</h1>
+    <h2 style="color: aliceblue; text-align: center; padding-top: 50px;">Search for your favourite product.</h2>
+    <form style="  text-align: center;" action="{{ url_for("search")}}" method="POST">
+        <input type="search" name="search_param" id="searchbar" >
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- <a href="{{url_for("message")}}">Send a message</a> -->
+
+
+    <table id="prodtable">
+        <tr>
+            {% for header in headings%}
+            <th>{{header}}</th>
+            {% endfor %}
+        </tr>
+
+        {% for row in data %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+
+</html>

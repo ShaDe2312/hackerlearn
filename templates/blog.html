@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About XYZ Ecommerce</title>
+    <link rel="stylesheet" href="../static/blog.css">
+</head>
+<body>
+    <div class="topnav">
+        <a href="{{url_for("dashboard")}}" >View our products</a>
+        <a href="{{url_for("blog")}}" class="active">Read our blog</a>
+        <a href="{{url_for("insert")}}">Review our products</a>
+        <a href="{{url_for('logout')}}" style="float: right;">Press here to logout</a>
+    </div>
+    <h1 style="text-align: center; color: aqua;">How we grew from 1000 to 300000 customers in two years!</h1>
+    <p style="padding: 20px 250px 20px 250px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod sequi ipsum repellendus recusandae quis neque accusantium quae quaerat, at, velit perferendis ratione quos nihil consectetur expedita deleniti error tempore dolorem omnis in eveniet vero ipsa fugiat? Excepturi dolor quisquam, vero optio non cupiditate eligendi eveniet omnis. Dolor quidem sunt enim eum pariatur nisi, sed ducimus exercitationem libero quo reiciendis error velit. Laudantium ullam, eligendi cum quisquam facere officiis. Eveniet ea sunt dignissimos repellat obcaecati, maiores aliquid ipsam, expedita reprehenderit earum ex aut quam odit distinctio eius saepe quo enim minima corporis nulla odio quaerat. Ducimus reiciendis ipsam obcaecati dolores officiis consectetur nobis maiores itaque error debitis eligendi ab architecto a, tempora quis minima. Neque enim obcaecati iusto quo distinctio esse voluptatem, odit ipsam eius expedita facilis totam asperiores deserunt provident reiciendis, minus rem nostrum dolorem sit eos animi eligendi officiis quas. Minima, quam! Natus, exercitationem quo? Corrupti adipisci qui asperiores dolores eligendi inventore in quis, necessitatibus accusantium distinctio itaque reiciendis harum ad fuga nisi ipsum doloribus cumque illum vero, voluptatibus pariatur molestias praesentium maxime? Et quibusdam quos facilis error quisquam quae minima voluptate officiis nesciunt blanditiis omnis, placeat dignissimos, vero vitae minus reprehenderit? Rerum deleniti cum laudantium necessitatibus perspiciatis magnam odio quos beatae nostrum laborum incidunt ipsa, repudiandae saepe placeat reprehenderit consectetur molestiae repellat impedit quia. Placeat voluptatibus praesentium, repellat illum libero recusandae porro, optio minus quod repudiandae cumque ipsum earum, omnis consequatur autem at magnam consectetur dolorem id eius! Optio esse tempora deserunt id labore placeat possimus. Non ab sequi error sapiente laborum excepturi vitae, alias, placeat esse illum doloremque earum iste voluptatum sed aliquam modi. Ea ipsam odit necessitatibus error laudantium quidem? Dignissimos velit cum cumque sapiente, voluptatem totam quam alias minima fugit illo, culpa repudiandae neque ullam minus! Totam nobis maiores doloremque recusandae optio repellendus facere exercitationem. Repellendus natus voluptas quo atque fugit soluta totam magni quod quam cupiditate vel sapiente magnam consequuntur accusamus ex odio nulla nisi hic esse, eos culpa! Rerum neque ratione mollitia vitae similique esse tenetur modi cum, optio libero vel aliquid nihil officia ipsam facere repudiandae incidunt excepturi, ut nisi? Explicabo libero quidem laboriosam voluptas tempore magnam excepturi id vel enim, possimus amet. Provident ipsum doloribus assumenda fugiat sit error eum similique ducimus optio quidem. Possimus aspernatur soluta delectus minus ipsa accusamus rem accusantium at molestiae qui vel quis sed neque, necessitatibus corrupti impedit provident sint esse temporibus praesentium nemo. Laborum repellendus id qui, itaque a minima laudantium cum vitae distinctio excepturi, assumenda, fugit sunt nemo. Aliquam, et. Suscipit, consequatur quae aut at porro nobis earum velit deleniti beatae eaque error omnis dolores esse minus itaque explicabo nam consequuntur iure ad voluptatibus distinctio vero? Doloremque dolore, perferendis placeat non molestias tenetur. Esse exercitationem quisquam voluptatibus sequi optio vero eos architecto quod nostrum excepturi saepe qui consectetur cum ex quos libero sit debitis, facilis at nulla blanditiis officia. Nobis quia praesentium, eius tempore minima molestias aperiam, tempora iste nihil similique possimus necessitatibus fuga provident aut veniam deserunt voluptatibus illo dignissimos quis quam eligendi. Nam delectus cumque veniam quaerat eos quidem nihil asperiores iusto, quasi deleniti. Maiores beatae temporibus neque dolore vitae odit architecto veniam quasi explicabo, hic cumque voluptas cum eligendi fugit ullam in ipsa, assumenda corrupti, sit quod nesciunt nostrum quidem. Ab accusamus quibusdam eveniet perspiciatis, tempore sint ducimus possimus reiciendis obcaecati culpa doloribus fuga similique quaerat porro aliquam repellendus corporis dignissimos deleniti facilis laboriosam itaque recusandae quisquam eligendi? Sunt nobis quas voluptates odio! Nihil facilis modi cumque. Ad dolorum sunt hic eligendi in molestias ratione temporibus debitis exercitationem non autem dolore ipsa porro quisquam optio minima corrupti, excepturi, odit praesentium eveniet! Corporis aperiam ex inventore optio, fuga totam? Nihil ullam dolorum dicta eius ad quaerat ipsa harum earum quo quis provident voluptatibus reiciendis consequatur eos, aut nobis minima accusantium exercitationem voluptas. Et tempora quaerat doloremque saepe? Eveniet quaerat aliquid vel sint voluptates. Officiis aliquam accusamus laboriosam perferendis, necessitatibus excepturi dignissimos consequatur.</p>
+    
+    <section id="blog1">
+        <h3 style="color: aqua;">Comments</h3>
+        {% for datum in data%}
+        <div class="commentdiv">
+            <h4 class="uname">{{datum[0]}}</h4>
+            <p>
+                {{datum[1] | safe}}
+            </p>
+            <!-- <div class="line"></div> -->
+            <hr>
+        </div>
+        {% endfor %}
+        <form action="{{url_for("comment")}}" method="post">
+            <input type="text" style name="comment" id="commentbox">
+            <button type="submit">Add a comment</button>
+            <input type='hidden' name='comment_id' value='' id="comment_id"/> 
+            <input type="hidden" name="blog_id" value='1' id="blog_id">
+        </form>
+    </section>
+</body>
+
+<script>
+
+    function makeid(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * 
+    charactersLength));
+    }
+    return result;
+    }
+
+    var hiddenfield = document.getElementById("comment_id");
+    var id = makeid(10);
+    hiddenfield.setAttribute("value" , id);
+</script>
+</html>
